@@ -16,15 +16,16 @@ const AboutSection = () => {
         transition={{ duration: 0.7 }}
       >
         <div className="relative">  {/* Add ml-4 for slight right shift */}
-  <video
+  <video 
     className="rounded-lg shadow-lg object-cover"
     style={{ width: '100%', maxWidth: '440px', height: 'auto', maxHeight: '700px' }}
-    src="https://0qxqbv5kccsxceh4.public.blob.vercel-storage.com/ad1-oqRvctOU2XdOKzFakNdPYkmrVlQEOj.MOV"
+    src="/media/Ad1.mp4"
     autoPlay
     muted
     loop
     playsInline
     controls
+    
   />
   <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-white rounded-full -z-10"></div>
   <div className="absolute -top-5 -left-5 w-24 h-24 bg-cocast-beige rounded-full -z-10"></div>
