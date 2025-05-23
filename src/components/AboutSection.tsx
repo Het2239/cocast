@@ -4,29 +4,36 @@ import { motion } from 'framer-motion';
 const AboutSection = () => {
   return (
     <section className="py-16 bg-cocast-cream/50">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Image Column */}
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1586767003402-8ade266deb64?q=80&w=1587&auto=format&fit=crop"
-                alt="Cocast sustainable practices" 
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
-              />
-              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-white rounded-full -z-10"></div>
-              <div className="absolute -top-5 -left-5 w-24 h-24 bg-cocast-beige rounded-full -z-10"></div>
-            </div>
-          </motion.div>
-          
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col lg:flex-row items-center gap-12">
+      
+      {/* Video Column */}
+      <motion.div
+        className="lg:w-1/2 flex justify-center lg:justify-start"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="relative">  {/* Add ml-4 for slight right shift */}
+  <video
+    className="rounded-lg shadow-lg object-cover"
+    style={{ width: '100%', maxWidth: '440px', height: 'auto', maxHeight: '700px' }}
+    src="https://0qxqbv5kccsxceh4.public.blob.vercel-storage.com/ad1-oqRvctOU2XdOKzFakNdPYkmrVlQEOj.MOV"
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+  />
+  <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-white rounded-full -z-10"></div>
+  <div className="absolute -top-5 -left-5 w-24 h-24 bg-cocast-beige rounded-full -z-10"></div>
+</div>
+
+      </motion.div>
+
           {/* Text Column */}
-          <motion.div 
+          <motion.div
             className="lg:w-1/2"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -43,7 +50,7 @@ const AboutSection = () => {
                 Every formula is developed with intention, combining ancient botanical wisdom with modern scientific research to create products that are effective, gentle, and kind to our planet.
               </p>
             </div>
-            
+
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Feature 1 */}
               <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -55,7 +62,7 @@ const AboutSection = () => {
                 <h3 className="font-medium mb-1">All Natural</h3>
                 <p className="text-sm text-cocast-brown/70">Ingredients sourced directly from nature</p>
               </div>
-              
+
               {/* Feature 2 */}
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="w-10 h-10 bg-cocast-lightSage rounded-full flex items-center justify-center mb-3">
@@ -66,7 +73,7 @@ const AboutSection = () => {
                 <h3 className="font-medium mb-1">Cruelty Free</h3>
                 <p className="text-sm text-cocast-brown/70">Never tested on animals</p>
               </div>
-              
+
               {/* Feature 3 */}
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="w-10 h-10 bg-cocast-lightSage rounded-full flex items-center justify-center mb-3">
@@ -78,10 +85,10 @@ const AboutSection = () => {
                 <p className="text-sm text-cocast-brown/70">Sustainable packaging solutions</p>
               </div>
             </div>
-            
+
             <div className="mt-8">
-              <a 
-                href="/about" 
+              <a
+                href="/about"
                 className="inline-block bg-white hover:bg-cocast-beige border border-cocast-sage text-cocast-sage hover:text-cocast-darkSage font-medium py-2 px-6 rounded-md transition-colors"
               >
                 Learn More About Us
