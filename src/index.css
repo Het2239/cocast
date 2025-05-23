@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 39 38% 97%;
+    --foreground: 33 10% 18%;
+
+    --card: 39 38% 97%;
+    --card-foreground: 33 10% 18%;
+
+    --popover: 39 38% 97%;
+    --popover-foreground: 33 10% 18%;
+
+    --primary: 110 25% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 34 22% 85%;
+    --secondary-foreground: 33 10% 18%;
+
+    --muted: 34 22% 90%;
+    --muted-foreground: 33 7% 40%;
+
+    --accent: 34 22% 85%;
+    --accent-foreground: 33 10% 18%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 34 15% 85%;
+    --input: 34 15% 85%;
+    --ring: 110 25% 60%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-cocast-cream text-cocast-brown font-inter;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
