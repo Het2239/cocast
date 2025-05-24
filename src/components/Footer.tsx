@@ -73,7 +73,7 @@ const Footer = () => {
     const formData = new FormData(form);
     const email = formData.get("email") as string;
 
-    const res = await fetch('http://localhost:3000/api/subscribe', {
+    const res = await fetch('http://cocastindia.com/api/subscribe', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ email }),
