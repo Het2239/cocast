@@ -42,9 +42,9 @@ const AboutPage = () => {
               {...fadeIn}
             >
               <img 
-                src="https://images.unsplash.com/photo-1572006614644-78795a9d6e50?q=80&w=1470&auto=format&fit=crop"
+                src="/media/essentials.png"
                 alt="Cocast team working with natural ingredients" 
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
+                className="rounded-lg shadow-lg w-[500px] h-[650px] object-cover ml-auto mr-auto"
               />
             </motion.div>
             
@@ -150,7 +150,7 @@ const AboutPage = () => {
       </section>
       
       {/* Story Section */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
             <motion.div 
@@ -196,7 +196,7 @@ const AboutPage = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
       
       {/* CTA Section */}
       <section className="py-16 bg-cocast-sage text-white">

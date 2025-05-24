@@ -3,7 +3,7 @@ import cors from 'cors';
 const app = express();
 // const port = process.env.PORT || 3000;
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: 'http://www.cocastindia.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));

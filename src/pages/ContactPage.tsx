@@ -207,24 +207,25 @@ const ContactPage = () => {
                   <p>Saturday - Sunday: Closed</p>
                 </div>
               </div>
-              <div className="bg-cocast-cream/50 p-6 rounded-lg">
-                  <h3 className="text-lg font-medium mb-3">Become a Retailer</h3>
-                  <p className="text-cocast-brown/80 mb-4">
-                    Interested in stocking Cocast products in your store? We'd love to partner with like-minded retailers who share our values.
-                  </p>
-                  <a 
-                    href="mailto:wholesale@cocast.com" 
-                    className="inline-flex items-center text-cocast-darkSage hover:text-cocast-sage transition-colors"
-                  >
-                    Contact our wholesale team
-                    <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </a>
-                </div>
+              <div className="bg-cocast-cream p-5 rounded-xl shadow-xl border border-cocast-darkSage/20">
+                <h3 className="text-lg font-semibold mb-3 text-cocast-darkSage">Become a Retailer</h3>
+                <p className="text-cocast-brown/90 mb-4">
+                  Interested in stocking Cocast products in your store? We'd love to partner with like-minded retailers who share our values.
+                </p>
+                <a
+                  href="mailto:wholesale@cocast.com"
+                  className="inline-flex items-center text-cocast-darkSage hover:text-cocast-sage transition-colors font-medium"
+                >
+                  Contact our wholesale team
+                  <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+
             </div>
-            
-              
+
+
           </motion.div>
         </div>
       </section>

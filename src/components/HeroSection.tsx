@@ -46,9 +46,9 @@ const HeroSection = () => {
           >
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1592136957897-b2b6ca21e10d?q=80&w=2070&auto=format&fit=crop"
+                src="/media/soap-display.png"
                 alt="Cocast natural products showcase" 
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
+                className="rounded-lg shadow-lg w-full h-auto object-fit"
               />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-cocast-lightSage rounded-full -z-10"></div>
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-cocast-beige rounded-full -z-10"></div>
