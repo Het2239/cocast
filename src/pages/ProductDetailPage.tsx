@@ -23,39 +23,39 @@ const products = [
   {
     id: "gold-shampoo",
     name: "Gold Shampoo",
-    description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair. Our sulfate-free formula removes buildup without stripping natural oils, leaving hair clean, manageable and naturally shiny. Perfect for all hair types including color-treated hair.",
+    description: "Helps improve hair texture and enhance color longevity. Our formula reduces and prevents dandruff, which can weaken hair, while minimizing the risk of hair loss and breakage. Ideal for maintaining healthy, strong, and vibrant hair.",
     image: "/media/gold-shampoo.png",
     category: "Hair Care",
-    ingredients: ["Aloe Vera Juice", "Coconut-derived Surfactants", "Avocado Oil", "Vitamin B5", "Rosemary Extract", "Lavender Essential Oil", "Citric Acid"],
+    ingredients: ["Rosemarinus Officinalis Leaf Extract","Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine","Cocomonoethanod","Ethylene Glycol Monostearate","Sodium Chloride","Cyclopentasiloxane"],
     benefits: ["Gentle cleansing", "Adds natural shine", "Strengthens hair follicles", "Balances scalp"],
     usage: "Apply to wet hair and massage into scalp. Rinse thoroughly. For best results, follow with our Restorative Conditioner.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free"],
+    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free","Non-Toxic"],
     size: "250ml",
     related: ["restorative-hair-mask", "calming-body-oil", "moisturizing-body-wash"]
   },
   {
     id: "velvet-shampoo",
     name: "Velvet Touch Shampoo",
-    description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair. Our sulfate-free formula removes buildup without stripping natural oils, leaving hair clean, manageable and naturally shiny. Perfect for all hair types including color-treated hair.",
+    description: "Helps improve hair texture and enhance color longevity. Our formula reduces and prevents dandruff, which can weaken hair, while minimizing the risk of hair loss and breakage. Ideal for maintaining healthy, strong, and vibrant hair.",
     image: "/media/velvet-shampoo.jpg",
     category: "Hair Care",
-    ingredients: ["Aloe Vera Juice", "Coconut-derived Surfactants", "Avocado Oil", "Vitamin B5", "Rosemary Extract", "Lavender Essential Oil", "Citric Acid"],
+    ingredients: ["Rosemarinus Officinalis Leaf Extract","Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine","Cocomonoethanod","Ethylene Glycol Monostearate","Sodium Chloride","Cyclopentasiloxane"],
     benefits: ["Gentle cleansing", "Adds natural shine", "Strengthens hair follicles", "Balances scalp"],
     usage: "Apply to wet hair and massage into scalp. Rinse thoroughly. For best results, follow with our Restorative Conditioner.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free"],
+    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free","Non-Toxic"],
     size: "250ml",
     related: ["restorative-hair-mask", "calming-body-oil", "moisturizing-body-wash"]
   },
   {
     id: "rosemary-shampoo",
     name: "Rosemary Shampoo",
-    description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair. Our sulfate-free formula removes buildup without stripping natural oils, leaving hair clean, manageable and naturally shiny. Perfect for all hair types including color-treated hair.",
+    description: "Helps improve hair texture and enhance color longevity. Our formula reduces and prevents dandruff, which can weaken hair, while minimizing the risk of hair loss and breakage. Ideal for maintaining healthy, strong, and vibrant hair.",
     image: "/media/rosemary-shampoo.png",
     category: "Hair Care",
-    ingredients: ["Aloe Vera Juice", "Coconut-derived Surfactants", "Avocado Oil", "Vitamin B5", "Rosemary Extract", "Lavender Essential Oil", "Citric Acid"],
+    ingredients: ["Rosemarinus Officinalis Leaf Extract","Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine","Cocomonoethanod","Ethylene Glycol Monostearate","Sodium Chloride","Cyclopentasiloxane"],
     benefits: ["Gentle cleansing", "Adds natural shine", "Strengthens hair follicles", "Balances scalp"],
     usage: "Apply to wet hair and massage into scalp. Rinse thoroughly. For best results, follow with our Restorative Conditioner.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free"],
+    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free","Non-Toxic"],
     size: "250ml",
     related: ["restorative-hair-mask", "calming-body-oil", "moisturizing-body-wash"]
   },
@@ -78,10 +78,10 @@ const products = [
     description: "Rich in natural oils and butters to provide deep hydration for all skin types. This nourishing cream creates a protective barrier that locks in moisture while allowing skin to breathe. Ideal for daily use and especially beneficial for dry or mature skin.",
     image: "/media/rose-bodylotion.png",
     category: "Skincare",
-    ingredients: ["Shea Butter", "Coconut Oil", "Aloe Vera", "Vitamin E", "Rose Water", "Glycerin", "Vitamin B3"],
-    benefits: ["24-hour hydration", "Strengthens skin barrier", "Reduces dryness", "Improves skin texture"],
-    usage: "Apply to clean face and neck morning and evening. Use gentle upward motions to massage into skin.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free"],
+    ingredients: ["Rose Extract", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua","Cetyl Alchol","Stearic Acid","Light Liquid Paraffin","Phenoxithenol","Titanium Dioxide","Disodium EDTA","Butylated Hydroxy Toluene","Fragnance"],
+    benefits: ["24-hour hydration", "Natural Oils and Extracts", "Reduces dryness", "Improves skin texture"],
+    usage: "Apply to clean face and body morning and evening. Use gentle upward motions to massage into skin.",
+    certifications: ["Vegan", "Cruelty-Free","Non-Toxic"],
     size: "50ml",
     related: ["revitalizing-serum", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
   },
@@ -91,10 +91,10 @@ const products = [
     description: "Rich in natural oils and butters to provide deep hydration for all skin types. This nourishing cream creates a protective barrier that locks in moisture while allowing skin to breathe. Ideal for daily use and especially beneficial for dry or mature skin.",
     image: "/media/velvet-bodylotion.png",
     category: "Skincare",
-    ingredients: ["Shea Butter", "Coconut Oil", "Aloe Vera", "Vitamin E", "Rose Water", "Glycerin", "Vitamin B3"],
-    benefits: ["24-hour hydration", "Strengthens skin barrier", "Reduces dryness", "Improves skin texture"],
-    usage: "Apply to clean face and neck morning and evening. Use gentle upward motions to massage into skin.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free"],
+    ingredients: ["Mulberry Extract", "Rice Water", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua","Cetyl Alchol","Stearic Acid","Light Liquid Paraffin","Phenoxithenol","Titanium Dioxide","Disodium EDTA","Butylated Hydroxy Toluene","Fragnance"],
+    benefits: ["24-hour hydration", "Natural Oils and Extracts", "Reduces dryness", "Improves skin texture"],
+    usage: "Apply to clean face and body morning and evening. Use gentle upward motions to massage into skin.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "50ml",
     related: ["revitalizing-serum", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
   },
@@ -104,10 +104,10 @@ const products = [
     description: "Rich in natural oils and butters to provide deep hydration for all skin types. This nourishing cream creates a protective barrier that locks in moisture while allowing skin to breathe. Ideal for daily use and especially beneficial for dry or mature skin.",
     image: "/media/honey-bodylotion.png",
     category: "Skincare",
-    ingredients: ["Shea Butter", "Coconut Oil", "Aloe Vera", "Vitamin E", "Rose Water", "Glycerin", "Vitamin B3"],
-    benefits: ["24-hour hydration", "Strengthens skin barrier", "Reduces dryness", "Improves skin texture"],
-    usage: "Apply to clean face and neck morning and evening. Use gentle upward motions to massage into skin.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free"],
+    ingredients: ["Honey", "Almond Oil", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua","Cetyl Alchol","Stearic Acid","Light Liquid Paraffin","Phenoxithenol","Titanium Dioxide","Disodium EDTA","Butylated Hydroxy Toluene","Fragnance"],
+    benefits: ["24-hour hydration", "Natural Oils and Extracts", "Reduces dryness", "Improves skin texture"],
+    usage: "Apply to clean face and body morning and evening. Use gentle upward motions to massage into skin.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "50ml",
     related: ["revitalizing-serum", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
   },
@@ -127,26 +127,26 @@ const products = [
   {
     id: "rose-body-wash",
     name: "Rose Oud Body Wash",
-    description: "Gentle cleansing with coconut-derived surfactants and essential oils. This hydrating body wash creates a rich lather that cleanses without stripping skin's natural moisture. Leaves skin feeling clean, soft, and subtly scented with natural fragrances.",
+    description: "Indulge in a shower that delights your senses with a mood-boosting, expertly crafted fragrance. This body wash gently cleanses and hydrates, leaving your skin soft, refreshed, and subtly scented. A perfect blend of advanced technology and natural ingredients for a rejuvenating experience.",
     image: "/media/rose-bodywash.png",
     category: "Body",
-    ingredients: ["Coconut-derived Cleansers", "Aloe Vera", "Glycerin", "Essential Oil Blend", "Vitamin E", "Chamomile Extract"],
-    benefits: ["Gentle cleansing", "Maintains moisture barrier", "Suitable for sensitive skin", "Naturally scented"],
-    usage: "Apply to wet skin in shower or bath. Massage to create lather, then rinse thoroughly.",
-    certifications: ["Vegan", "Cruelty-Free", "Sulfate-Free"],
+    ingredients: ["Aqua", "Sodium Lauryl Ether Sulphate", "Cocamidopropyl Betain", "Glycerine", "Vitamin E", "Rose Water","Aleovera Extract","Neem Extract","Sodium Benzoate","Acrylates Copolymer","Sodium Gluconate","PHENOXITHENOL","Fragnance"],
+    benefits: ["Hydrates and softens skin.", "Uplifts mood with a soothing, crafted fragrance.", "Gently cleanses without stripping moisture.", "Leaves skin subtly scented and refreshed"],
+    usage: "Pour a coin sized drop on a wet Loofah. Squeeze to make it lather, massage on wet skin, then rinse away with water. joy a luxurious, long Lasting Floral Fragnance & Soft glowing Skin.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "250ml",
     related: ["calming-body-oil", "nourishing-shampoo", "restorative-hair-mask"]
   },
   {
     id: "velvet-body-wash",
     name: "Velvet Touch (with Tea Tree Extract) Body Wash",
-    description: "Gentle cleansing with coconut-derived surfactants and essential oils. This hydrating body wash creates a rich lather that cleanses without stripping skin's natural moisture. Leaves skin feeling clean, soft, and subtly scented with natural fragrances.",
+    description: "Indulge in a shower that delights your senses with a mood-boosting, expertly crafted fragrance. This body wash gently cleanses and hydrates, leaving your skin soft, refreshed, and subtly scented. A perfect blend of advanced technology and natural ingredients for a rejuvenating experience.",
     image: "/media/velvet-bodywash.png",
     category: "Body",
-    ingredients: ["Coconut-derived Cleansers", "Aloe Vera", "Glycerin", "Essential Oil Blend", "Vitamin E", "Chamomile Extract"],
-    benefits: ["Gentle cleansing", "Maintains moisture barrier", "Suitable for sensitive skin", "Naturally scented"],
-    usage: "Apply to wet skin in shower or bath. Massage to create lather, then rinse thoroughly.",
-    certifications: ["Vegan", "Cruelty-Free", "Sulfate-Free"],
+    ingredients: ["Aqua", "Sodium Lauryl Ether Sulphate", "Cocamidopropyl Betain", "Glycerine", "Vitamin E", "Mulberry Extract","Aleovera Extract","Tea Tree Extract","Neem Extract","Sodium Benzoate","Acrylates Copolymer","Sodium Gluconate","PHENOXITHENOL","Fragnance"],
+    benefits: ["Hydrates and softens skin.", "Uplifts mood with a soothing, crafted fragrance.", "Gently cleanses without stripping moisture.", "Leaves skin subtly scented and refreshed"],
+    usage: "Pour a coin sized drop on a wet Loofah. Squeeze to make it lather, massage on wet skin, then rinse away with water. joy a luxurious, long Lasting Floral Fragnance & Soft glowing Skin.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "250ml",
     related: ["calming-body-oil", "nourishing-shampoo", "restorative-hair-mask"]
   },
@@ -169,11 +169,11 @@ const products = [
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
     image: "/media/rose-soap.png",
     category: "Body",
-    ingredients: ["Bamboo Powder", "Papaya Enzyme", "Pineapple Extract", "Aloe Vera", "Jojoba Beads", "Vitamin C", "Green Tea Extract"],
+    ingredients: ["Rose Petals","Rose Water","Aleovera Extract","Neem Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
     usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Microplastic-Free"],
-    size: "75ml",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
     related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
   },
   {
@@ -182,11 +182,11 @@ const products = [
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
     image: "/media/neem-soap.png",
     category: "Body",
-    ingredients: ["Bamboo Powder", "Papaya Enzyme", "Pineapple Extract", "Aloe Vera", "Jojoba Beads", "Vitamin C", "Green Tea Extract"],
+    ingredients: ["Neem Leaves","Basil Extract","Aleovera Extract","Neem Oil", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
     usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Microplastic-Free"],
-    size: "75ml",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
     related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
   },
   {
@@ -195,11 +195,11 @@ const products = [
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
     image: "/media/camphor-soap.png",
     category: "Body",
-    ingredients: ["Bamboo Powder", "Papaya Enzyme", "Pineapple Extract", "Aloe Vera", "Jojoba Beads", "Vitamin C", "Green Tea Extract"],
+    ingredients: ["Lavender Buds","Lavender Extract","Aleovera Extract","Neem Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
     usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Microplastic-Free"],
-    size: "75ml",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
     related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
   },
   {
@@ -208,11 +208,37 @@ const products = [
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
     image: "/media/sandal-soap.png",
     category: "Body",
-    ingredients: ["Bamboo Powder", "Papaya Enzyme", "Pineapple Extract", "Aloe Vera", "Jojoba Beads", "Vitamin C", "Green Tea Extract"],
+    ingredients: ["Sandal Oil","Saffron Extract","Aleovera Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
     usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Microplastic-Free"],
-    size: "75ml",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
+    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+  },
+  {
+    id: "lemon-soap",
+    name: "Lemon Grass Soap",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
+    image: "/media/lemon-soap.png",
+    category: "Body",
+    ingredients: ["Lemongrass Extract","Lemongrass Leaf","Aleovera Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
+    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
+    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+  },
+  {
+    id: "velvet-soap",
+    name: "Velvet Touch Soap",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
+    image: "/media/velvet-soap.png",
+    category: "Body",
+    ingredients: ["Lavender Buds","Lavender Extract","Aleovera Extract","Neem Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
+    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
     related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
   }
 ];
@@ -329,6 +355,9 @@ const ProductDetailPage = () => {
                     {cert === 'Vegan' && <Leaf size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Cruelty-Free' && <Heart size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Organic' && <PackageOpen size={16} className="mr-1.5 text-cocast-darkSage" />}
+                    {cert === 'Paraben-Free' && <NoEntry size={16} className="mr-1.5 text-cocast-darkSage" />}
+                    {cert === 'Non-Toxic' && <Shield size={16} className="mr-1.5 text-cocast-darkSage" />}
+
                     <span className="text-xs font-medium">{cert}</span>
                   </div>
                 ))}
