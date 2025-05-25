@@ -355,8 +355,8 @@ const ProductDetailPage = () => {
                     {cert === 'Vegan' && <Leaf size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Cruelty-Free' && <Heart size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Organic' && <PackageOpen size={16} className="mr-1.5 text-cocast-darkSage" />}
-{/*                     {cert === 'Paraben-Free' && <NoEntry size={16} className="mr-1.5 text-cocast-darkSage" />} */}
-{/*                     {cert === 'Non-Toxic' && <Shield size={16} className="mr-1.5 text-cocast-darkSage" />} */}
+                    {cert === 'Paraben-Free' && <NoEntry size={16} className="mr-1.5 text-cocast-darkSage" />}
+                    {cert === 'Non-Toxic' && <Shield size={16} className="mr-1.5 text-cocast-darkSage" />}
 
                     <span className="text-xs font-medium">{cert}</span>
                   </div>
