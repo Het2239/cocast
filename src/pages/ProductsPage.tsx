@@ -116,6 +116,20 @@ const products = [
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
     image: "/media/sandal-soap.png",
     category: "Body"
+  },
+    {
+    id: "lemon-soap",
+    name: "Sandal & Saffron Soap",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    image: "/media/lemon-soap.png",
+    category: "Body"
+  },
+    {
+    id: "velvet-soap",
+    name: "Sandal & Saffron Soap",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    image: "/media/velvet-soap.png",
+    category: "Body"
   }
 ];
 
