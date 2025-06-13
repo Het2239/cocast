@@ -18,7 +18,7 @@ const MapSection = () => {
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.512979219108!2d72.67843049999999!3d23.041647599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e870f0201f751%3A0xd520da49a126b37!2sCocast%20india!5e0!3m2!1sen!2sin!4v1749776542211!5m2!1sen!2sin"
           width="100%"
-          height="300px"
+          height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
@@ -207,7 +207,7 @@ const ContactPage = () => {
   return (
     <div className="pt-24 pb-16">
       {/* Hero */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-16">
         <div className="container mx-auto text-center px-4 max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-lg text-gray-700">
@@ -283,7 +283,7 @@ const ContactPage = () => {
   type="button"
   onClick={handleSubmit}
   disabled={isSubmitting}
-  className="w-full bg-primary hover:bg-primary/80 text-white font-medium py-2.5 px-6 rounded-md transition-colors disabled:opacity-70 flex items-center justify-center"
+  className="w-full bg-cocast-sage hover:bg-cocast-darkSage text-white font-medium py-2.5 px-6 rounded-md transition-colors disabled:opacity-70 flex items-center justify-center"
 >
   {isSubmitting ? (
     <>
