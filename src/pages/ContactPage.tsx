@@ -18,7 +18,7 @@ const MapSection = () => {
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.512979219108!2d72.67843049999999!3d23.041647599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e870f0201f751%3A0xd520da49a126b37!2sCocast%20india!5e0!3m2!1sen!2sin!4v1749776542211!5m2!1sen!2sin"
           width="100%"
-          height="500px"
+          height="300px"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
