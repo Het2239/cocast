@@ -1,9 +1,9 @@
 
 import { useEffect } from 'react';
 import HeroSection from '@/components/HeroSection';
-import FeaturedProducts from '@/components/FeaturedProducts';
+import ProductCarousel from '@/components/ProductCarousel';
 import AboutSection from '@/components/AboutSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
+// import TestimonialsSection from '@/components/TestimonialsSection';
 import CallToActionSection from '@/components/CallToActionSection';
 import { motion } from 'framer-motion';
 
@@ -20,9 +20,9 @@ const HomePage = () => {
       transition={{ duration: 0.5 }}
     >
       <HeroSection />
-      <FeaturedProducts />
+      <ProductCarousel />
       <AboutSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <CallToActionSection />
     </motion.div>
   );

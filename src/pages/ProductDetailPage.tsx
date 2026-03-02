@@ -2,243 +2,295 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ProductCard from '@/components/ProductCard';
-import { motion } from 'framer-motion';
+import ProductGallery from '@/components/ProductGallery';
+import { motion, AnimatePresence } from 'framer-motion';
+import useSEO from '@/hooks/useSEO';
 import { Leaf, Heart, PackageOpen } from 'lucide-react';
 
 // Sample product data - this would typically come from an API
 const products = [
-  // {
-  //   id: "revitalizing-serum",
-  //   name: "Revitalizing Serum",
-  //   description: "A potent blend of botanical extracts that hydrate and restore skin elasticity. Our Revitalizing Serum is designed to rejuvenate tired skin and provide deep hydration where it's needed most. Formulated with hyaluronic acid and plant stem cells, this lightweight serum absorbs quickly to deliver nutrients deep into the skin.",
-  //   image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=1374&auto=format&fit=crop",
-  //   category: "Skincare",
-  //   ingredients: ["Aloe Vera Extract", "Hyaluronic Acid", "Rose Hip Oil", "Vitamin E", "Jojoba Oil", "Green Tea Extract", "Chamomile Essential Oil"],
-  //   benefits: ["Deeply hydrates skin", "Improves elasticity", "Reduces fine lines", "Soothes irritation"],
-  //   usage: "Apply 2-3 drops to clean skin morning and evening. Gently massage in circular motions until absorbed. Follow with moisturizer.",
-  //   certifications: ["Vegan", "Cruelty-Free", "Organic"],
-  //   size: "30ml",
-  //   related: ["hydrating-face-cream", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
-  // },
   {
     id: "gold-shampoo",
     name: "Gold Shampoo",
     description: "Helps improve hair texture and enhance color longevity. Our formula reduces and prevents dandruff, which can weaken hair, while minimizing the risk of hair loss and breakage. Ideal for maintaining healthy, strong, and vibrant hair.",
     image: "/media/gold-shampoo.png",
+    images: ["/media/gold-shampoo-1.png", "/media/gold-shampoo-3.jpg"],
     category: "Hair Care",
-    ingredients: ["Rosemarinus Officinalis Leaf Extract","Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine","Cocomonoethanod","Ethylene Glycol Monostearate","Sodium Chloride","Cyclopentasiloxane"],
+    ingredients: ["Rosemarinus Officinalis Leaf Extract", "Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine", "Cocomonoethanod", "Ethylene Glycol Monostearate", "Sodium Chloride", "Cyclopentasiloxane"],
     benefits: ["Gentle cleansing", "Adds natural shine", "Strengthens hair follicles", "Balances scalp"],
     usage: "Apply to wet hair and massage into scalp. Rinse thoroughly. For best results, follow with our Restorative Conditioner.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free","Non-Toxic"],
-    size: "250ml",
-    related: ["restorative-hair-mask", "calming-body-oil", "moisturizing-body-wash"]
+    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free", "Non-Toxic"],
+    size: "350ml",
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Shampoo-Daily-Nourishing-Cleanser/dp/B0G443VB27/",
+      flipkart: "https://www.flipkart.com/cocast-gold-shampoo-250-ml/p/itm224207702d92c?pid=SHOG443VB27",
+    },
+    related: []
   },
   {
     id: "velvet-shampoo",
     name: "Velvet Touch Shampoo",
     description: "Helps improve hair texture and enhance color longevity. Our formula reduces and prevents dandruff, which can weaken hair, while minimizing the risk of hair loss and breakage. Ideal for maintaining healthy, strong, and vibrant hair.",
     image: "/media/velvet-shampoo.jpg",
+    images: ["/media/vt-shampoo-1.jpeg", "/media/vt-shampoo-2.jpg"],
     category: "Hair Care",
-    ingredients: ["Rosemarinus Officinalis Leaf Extract","Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine","Cocomonoethanod","Ethylene Glycol Monostearate","Sodium Chloride","Cyclopentasiloxane"],
+    ingredients: ["Rosemarinus Officinalis Leaf Extract", "Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine", "Cocomonoethanod", "Ethylene Glycol Monostearate", "Sodium Chloride", "Cyclopentasiloxane"],
     benefits: ["Gentle cleansing", "Adds natural shine", "Strengthens hair follicles", "Balances scalp"],
     usage: "Apply to wet hair and massage into scalp. Rinse thoroughly. For best results, follow with our Restorative Conditioner.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free","Non-Toxic"],
-    size: "250ml",
-    related: ["restorative-hair-mask", "calming-body-oil", "moisturizing-body-wash"]
+    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free", "Non-Toxic"],
+    size: "350ml",
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Velvet-Shampoo-Smooth-Cleanser/dp/B0G43Z7DR5/",
+    },
+    related: []
   },
   {
     id: "rosemary-shampoo",
     name: "Rosemary Shampoo",
     description: "Helps improve hair texture and enhance color longevity. Our formula reduces and prevents dandruff, which can weaken hair, while minimizing the risk of hair loss and breakage. Ideal for maintaining healthy, strong, and vibrant hair.",
-    image: "/media/rosemary-shampoo.png",
+    image: "/media/rose-shampoo-1.png",
+    images: ["/media/rose-shampoo-1.png", "/media/rose-shampoo-2.jpg"],
     category: "Hair Care",
-    ingredients: ["Rosemarinus Officinalis Leaf Extract","Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine","Cocomonoethanod","Ethylene Glycol Monostearate","Sodium Chloride","Cyclopentasiloxane"],
+    ingredients: ["Rosemarinus Officinalis Leaf Extract", "Aqua", "Cocamide Propylene Beatine", "Cocamide Diethanolaminl", "Sodium Luther Sulphate", "Coco Betaine", "Polyquaternium 7 Polyquaternium 10 Guar Hydroxypropyltrimontium Chloride", "Glycerine", "Cocomonoethanod", "Ethylene Glycol Monostearate", "Sodium Chloride", "Cyclopentasiloxane"],
     benefits: ["Gentle cleansing", "Adds natural shine", "Strengthens hair follicles", "Balances scalp"],
     usage: "Apply to wet hair and massage into scalp. Rinse thoroughly. For best results, follow with our Restorative Conditioner.",
-    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free","Non-Toxic"],
-    size: "250ml",
-    related: ["restorative-hair-mask", "calming-body-oil", "moisturizing-body-wash"]
+    certifications: ["Vegan", "Cruelty-Free", "Paraben-Free", "Non-Toxic"],
+    size: "350ml",
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Shampoo-Refreshing-Fragrance-Cleanser/dp/B0G4431GR2/",
+    },
+    related: []
   },
-  // {
-  //   id: "calming-body-oil",
-  //   name: "Calming Body Oil",
-  //   description: "Luxurious oil infused with lavender and chamomile to soothe and moisturize. Our lightweight, non-greasy formula absorbs quickly to nourish dry skin while promoting relaxation through aromatherapy benefits. Perfect for post-shower application or as a massage oil.",
-  //   image: "https://images.unsplash.com/photo-1608248511213-a66753155c1b?q=80&w=1374&auto=format&fit=crop",
-  //   category: "Body",
-  //   ingredients: ["Sweet Almond Oil", "Jojoba Oil", "Lavender Essential Oil", "Chamomile Extract", "Vitamin E", "Calendula Infusion"],
-  //   benefits: ["Deep hydration", "Promotes relaxation", "Soothes dry skin", "Non-greasy formula"],
-  //   usage: "Apply to damp skin after bathing. Massage in circular motions until absorbed. For extra relaxation, use before bedtime.",
-  //   certifications: ["Vegan", "Cruelty-Free", "Organic"],
-  //   size: "100ml",
-  //   related: ["moisturizing-body-wash", "nourishing-shampoo", "hydrating-face-cream"]
-  // },
   {
     id: "rose-body-lotion",
     name: "Rose-Oud Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types. This nourishing cream creates a protective barrier that locks in moisture while allowing skin to breathe. Ideal for daily use and especially beneficial for dry or mature skin.",
-    image: "/media/rose-bodylotion.png",
+    image: "/media/rose-lotion-1.jpeg",
+    images: ["/media/rose-lotion-1.jpeg", "/media/rose-lotion-2.jpeg"],
     category: "Skincare",
-    ingredients: ["Rose Extract", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua","Cetyl Alchol","Stearic Acid","Light Liquid Paraffin","Phenoxithenol","Titanium Dioxide","Disodium EDTA","Butylated Hydroxy Toluene","Fragnance"],
+    ingredients: ["Rose Extract", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua", "Cetyl Alchol", "Stearic Acid", "Light Liquid Paraffin", "Phenoxithenol", "Titanium Dioxide", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["24-hour hydration", "Natural Oils and Extracts", "Reduces dryness", "Improves skin texture"],
     usage: "Apply to clean face and body morning and evening. Use gentle upward motions to massage into skin.",
-    certifications: ["Vegan", "Cruelty-Free","Non-Toxic"],
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "50ml",
-    related: ["revitalizing-serum", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
+    purchaseLinks: {
+      amazon: null,
+    },
+    related: []
   },
   {
     id: "velvet-body-lotion",
     name: "Velvet Touch Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types. This nourishing cream creates a protective barrier that locks in moisture while allowing skin to breathe. Ideal for daily use and especially beneficial for dry or mature skin.",
-    image: "/media/velvet-bodylotion.png",
+    image: "/media/vt-lotion-1.jpeg",
+    images: ["/media/vt-lotion-1.jpeg", "/media/vt-lotion-2.jpeg"],
     category: "Skincare",
-    ingredients: ["Mulberry Extract", "Rice Water", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua","Cetyl Alchol","Stearic Acid","Light Liquid Paraffin","Phenoxithenol","Titanium Dioxide","Disodium EDTA","Butylated Hydroxy Toluene","Fragnance"],
+    ingredients: ["Mulberry Extract", "Rice Water", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua", "Cetyl Alchol", "Stearic Acid", "Light Liquid Paraffin", "Phenoxithenol", "Titanium Dioxide", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["24-hour hydration", "Natural Oils and Extracts", "Reduces dryness", "Improves skin texture"],
     usage: "Apply to clean face and body morning and evening. Use gentle upward motions to massage into skin.",
     certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "50ml",
-    related: ["revitalizing-serum", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
+    purchaseLinks: {
+      amazon: null,
+    },
+    related: []
   },
   {
     id: "honey-body-lotion",
     name: "Honey Almonds Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types. This nourishing cream creates a protective barrier that locks in moisture while allowing skin to breathe. Ideal for daily use and especially beneficial for dry or mature skin.",
-    image: "/media/honey-bodylotion.png",
+    image: "/media/honey-lotion-1.jpeg",
+    images: ["/media/honey-lotion-1.jpeg", "/media/honey-lotion-2.jpeg"],
     category: "Skincare",
-    ingredients: ["Honey", "Almond Oil", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua","Cetyl Alchol","Stearic Acid","Light Liquid Paraffin","Phenoxithenol","Titanium Dioxide","Disodium EDTA","Butylated Hydroxy Toluene","Fragnance"],
+    ingredients: ["Honey", "Almond Oil", "Shea Butter", "Vitamin E", "Aleovera Extract", "Glycerin", "Aqua", "Cetyl Alchol", "Stearic Acid", "Light Liquid Paraffin", "Phenoxithenol", "Titanium Dioxide", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["24-hour hydration", "Natural Oils and Extracts", "Reduces dryness", "Improves skin texture"],
     usage: "Apply to clean face and body morning and evening. Use gentle upward motions to massage into skin.",
     certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "50ml",
-    related: ["revitalizing-serum", "refreshing-facial-toner", "gentle-exfoliating-scrub"]
+    purchaseLinks: {
+      amazon: null,
+
+    },
+    related: []
   },
-  // {
-  //   id: "refreshing-facial-toner",
-  //   name: "Refreshing Facial Toner",
-  //   description: "Alcohol-free formula with rosewater and witch hazel to balance and refresh skin. This gentle toner removes any remaining impurities after cleansing while restoring skin's natural pH. Suitable for all skin types, particularly beneficial for combination skin.",
-  //   image: "https://images.unsplash.com/photo-1614806687007-2215a9db3b1b?q=80&w=1528&auto=format&fit=crop",
-  //   category: "Skincare",
-  //   ingredients: ["Rose Water", "Witch Hazel Extract", "Aloe Vera Juice", "Cucumber Extract", "Glycerin", "Chamomile Extract"],
-  //   benefits: ["Balances pH levels", "Reduces pore appearance", "Preps skin for moisturizer", "Refreshes without drying"],
-  //   usage: "After cleansing, apply to cotton pad and sweep gently over face and neck. Allow to dry before applying serum or moisturizer.",
-  //   certifications: ["Vegan", "Cruelty-Free", "Alcohol-Free"],
-  //   size: "120ml",
-  //   related: ["revitalizing-serum", "hydrating-face-cream", "gentle-exfoliating-scrub"]
-  // },
   {
     id: "rose-body-wash",
     name: "Rose Oud Body Wash",
     description: "Indulge in a shower that delights your senses with a mood-boosting, expertly crafted fragrance. This body wash gently cleanses and hydrates, leaving your skin soft, refreshed, and subtly scented. A perfect blend of advanced technology and natural ingredients for a rejuvenating experience.",
     image: "/media/rose-bodywash.png",
+    images: ["/media/rose-bodywash-1.jpeg", "/media/rose-wash-1.jpg", "/media/rose-bodywash-2.jpg"],
     category: "Body",
-    ingredients: ["Aqua", "Sodium Lauryl Ether Sulphate", "Cocamidopropyl Betain", "Glycerine", "Vitamin E", "Rose Water","Aleovera Extract","Neem Extract","Sodium Benzoate","Acrylates Copolymer","Sodium Gluconate","PHENOXITHENOL","Fragnance"],
+    ingredients: ["Aqua", "Sodium Lauryl Ether Sulphate", "Cocamidopropyl Betain", "Glycerine", "Vitamin E", "Rose Water", "Aleovera Extract", "Neem Extract", "Sodium Benzoate", "Acrylates Copolymer", "Sodium Gluconate", "PHENOXITHENOL", "Fragnance"],
     benefits: ["Hydrates and softens skin.", "Uplifts mood with a soothing, crafted fragrance.", "Gently cleanses without stripping moisture.", "Leaves skin subtly scented and refreshed"],
     usage: "Pour a coin sized drop on a wet Loofah. Squeeze to make it lather, massage on wet skin, then rinse away with water. joy a luxurious, long Lasting Floral Fragnance & Soft glowing Skin.",
     certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "250ml",
-    related: ["calming-body-oil", "nourishing-shampoo", "restorative-hair-mask"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Shower-Gel-Hydrating-Brightening/dp/B0G47WN7QM/",
+
+    },
+    related: []
   },
   {
     id: "velvet-body-wash",
     name: "Velvet Touch (with Tea Tree Extract) Body Wash",
     description: "Indulge in a shower that delights your senses with a mood-boosting, expertly crafted fragrance. This body wash gently cleanses and hydrates, leaving your skin soft, refreshed, and subtly scented. A perfect blend of advanced technology and natural ingredients for a rejuvenating experience.",
     image: "/media/velvet-bodywash.png",
+    images: ["/media/vt-bodywash-1.jpeg", "/media/vt-wash-1.jpg", "/media/vt-bodywash-2.jpg"],
     category: "Body",
-    ingredients: ["Aqua", "Sodium Lauryl Ether Sulphate", "Cocamidopropyl Betain", "Glycerine", "Vitamin E", "Mulberry Extract","Aleovera Extract","Tea Tree Extract","Neem Extract","Sodium Benzoate","Acrylates Copolymer","Sodium Gluconate","PHENOXITHENOL","Fragnance"],
+    ingredients: ["Aqua", "Sodium Lauryl Ether Sulphate", "Cocamidopropyl Betain", "Glycerine", "Vitamin E", "Mulberry Extract", "Aleovera Extract", "Tea Tree Extract", "Neem Extract", "Sodium Benzoate", "Acrylates Copolymer", "Sodium Gluconate", "PHENOXITHENOL", "Fragnance"],
     benefits: ["Hydrates and softens skin.", "Uplifts mood with a soothing, crafted fragrance.", "Gently cleanses without stripping moisture.", "Leaves skin subtly scented and refreshed"],
     usage: "Pour a coin sized drop on a wet Loofah. Squeeze to make it lather, massage on wet skin, then rinse away with water. joy a luxurious, long Lasting Floral Fragnance & Soft glowing Skin.",
     certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "250ml",
-    related: ["calming-body-oil", "nourishing-shampoo", "restorative-hair-mask"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Velvet-Shower-Gel-Gentle/dp/B0G47MLGFT/",
+
+    },
+    related: []
   },
-  // {
-  //   id: "restorative-hair-mask",
-  //   name: "Restorative Hair Mask",
-  //   description: "Deep conditioning treatment with argan oil and shea butter for damaged hair. This intensive weekly treatment repairs damage from heat styling and chemical processing while adding shine and manageability. Perfect for all hair types, especially beneficial for dry or color-treated hair.",
-  //   image: "https://images.unsplash.com/photo-1610705267928-1b9f2fa7f1c5?q=80&w=1374&auto=format&fit=crop",
-  //   category: "Hair Care",
-  //   ingredients: ["Argan Oil", "Shea Butter", "Coconut Oil", "Silk Proteins", "Vitamin E", "Avocado Oil", "Jojoba Oil"],
-  //   benefits: ["Repairs damaged hair", "Adds shine", "Improves manageability", "Prevents split ends"],
-  //   usage: "Apply to clean, damp hair focusing on ends. Leave for 10-15 minutes, then rinse thoroughly. Use weekly for best results.",
-  //   certifications: ["Vegan", "Cruelty-Free", "Silicone-Free"],
-  //   size: "200ml",
-  //   related: ["nourishing-shampoo", "calming-body-oil", "hydrating-face-cream"]
-  // },
   {
     id: "rose-soap",
     name: "Rose Petals Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
-    image: "/media/rose-soap.png",
+    image: "/media/rose-soap-1.jpeg",
+    images: ["/media/rose-soap-1.jpeg", "/media/rose-soap-1.jpg", "/media/rose-soap-2.jpg", "/media/info-p-1.jpg", "/media/info-p-2.jpg"],
     category: "Body",
-    ingredients: ["Rose Petals","Rose Water","Aleovera Extract","Neem Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
-    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
-    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    ingredients: ["Rose Petals", "Rose Water", "Aleovera Extract", "Neem Extract", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Enriched with Rose Extract & Vitamin-E", "Provides excellent Sun Block", "Natural Toner for skin"],
+    usage: "Apply Gently and foam soap, rinse it with water(warm water for oily skin, cold water for dry skin), dry pat with a soft towel.",
+    certifications: ["Sulphate Free", "Cruelty-Free", "Paraben Free"],
     size: "100gm",
-    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Premium-Luxury-Bathing-Vitamin/dp/B0G47Q8T91/",
+
+    },
+    related: []
   },
   {
     id: "neem-soap",
     name: "Neem Basil Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
-    image: "/media/neem-soap.png",
+    image: "/media/neem-soap-1.jpeg",
+    images: ["/media/neem-soap-1.jpeg", "/media/neem-soap-2.jpg", "/media/neem-soap-3.jpg", "/media/info-y-1.jpg", "/media/info-y-2.jpg"],
     category: "Body",
-    ingredients: ["Neem Leaves","Basil Extract","Aleovera Extract","Neem Oil", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
-    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
-    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    ingredients: ["Neem Leaves", "Basil Extract", "Aleovera Extract", "Neem Oil", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Skin Purifying", "Enriched with neem leaves paste", "Protects Skin from Acne & Infections"],
+    usage: "Apply Gently and foam soap, rinse it with water(warm water for oily skin, cold water for dry skin), dry pat with a soft towel.",
+    certifications: ["Sulphate Free", "Cruelty-Free", "Paraben Free"],
     size: "100gm",
-    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Premium-Luxury-Herbal-Bathing/dp/B0G8K987W8/",
+
+    },
+    related: []
   },
   {
     id: "camphor-soap",
     name: "Camphor Cube Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
-    image: "/media/camphor-soap.png",
+    image: "/media/camphor-soap-1.jpeg",
+    images: ["/media/camphor-soap-1.jpeg", "/media/camphor-soap-2.jpg", "/media/camphor-soap-1.jpg", "/media/info-w-1.jpg", "/media/info-w-2.jpg"],
     category: "Body",
-    ingredients: ["Lavender Buds","Lavender Extract","Aleovera Extract","Neem Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
-    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
-    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    ingredients: ["Bhimseni Camphor powder", "Coconut Oil", "Neem Extract", "Aloevera Extract", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Skin Purifying", "Keeps skin hydrated", "Antibacterial & Antifungal"],
+    usage: "Apply Gently and foam soap, rinse it with water(warm water for oily skin, cold water for dry skin), dry pat with a soft towel.",
+    certifications: ["Sulphate Free", "Cruelty-Free", "Paraben Free"],
     size: "100gm",
-    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Premium-Luxury-Camphor-Bathing/dp/B0G47T749R/",
+
+    },
+    related: []
   },
   {
     id: "sandal-soap",
     name: "Sandal & Saffron Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
-    image: "/media/sandal-soap.png",
+    image: "/media/sandal-soap-1.jpeg",
+    images: ["/media/sandal-soap-1.jpeg", "/media/sandal-soap-2.jpeg", "/media/info-1.jpg"],
     category: "Body",
-    ingredients: ["Sandal Oil","Saffron Extract","Aleovera Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
-    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
-    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    ingredients: ["Sandal Oil", "Saffron Extract", "Aleovera Extract", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Reduces Inflamation", "Promotes Skin Health", "Moisturize & Rejuvenate's skin", "Reduce Dryness & Dullness"],
+    usage: "Apply Gently and foam soap, rinse it with water(warm water for oily skin, cold water for dry skin), dry pat with a soft towel.",
+    certifications: ["Sulphate Free", "Cruelty-Free", "Paraben Free"],
     size: "100gm",
-    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Premium-Luxury-Saffron-Bathing/dp/B0G8KQWNC4/",
+
+    },
+    related: []
   },
   {
     id: "lemon-soap",
     name: "Lemon Grass Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
-    image: "/media/lemon-soap.png",
+    image: "/media/lemon-soap-1.jpeg",
+    images: ["/media/lemon-soap-1.jpeg", "/media/lemon-soap-2.jpeg"],
     category: "Body",
-    ingredients: ["Lemongrass Extract","Lemongrass Leaf","Aleovera Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
-    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
-    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
-    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    ingredients: ["Lemongrass Extract", "Lemongrass Leaf", "Aleovera Extract", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Antioxidant Properties", "Calming & Relaxing", "Brightens complexion", "Reduces Oily Skin"],
+    usage: "Apply Gently and foam soap, rinse it with water(warm water for oily skin, cold water for dry skin), dry pat with a soft towel.",
+    certifications: ["Sulphate Free", "Cruelty-Free", "Paraben Free"],
     size: "100gm",
-    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Premium-Luxury-Lemongrass-Bathing/dp/B0G8JW74WP/",
+
+    },
+    related: []
   },
   {
     id: "velvet-soap",
     name: "Velvet Touch Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
-    image: "/media/velvet-soap.png",
+    image: "/media/vt-soap-1.jpeg",
+    images: ["/media/vt-soap-1.jpeg", "/media/vt-soap-2.jpeg"],
     category: "Body",
-    ingredients: ["Lavender Buds","Lavender Extract","Aleovera Extract","Neem Extract", "Coconut Oil","Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    ingredients: ["Lavender Buds", "Lavender Extract", "Aleovera Extract", "Neem Extract", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Stress Relieving", "Soothes Dry Skin", "Fights Acne", "Reduce Scarring"],
+    usage: "Apply Gently and foam soap, rinse it with water(warm water for oily skin, cold water for dry skin), dry pat with a soft towel.",
+    certifications: ["Sulphate Free", "Cruelty-Free", "Paraben Free"],
+    size: "100gm",
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Premium-Luxury-Velvet-Bathing/dp/B0G8KDDSYC/",
+
+    },
+    related: []
+  },
+  {
+    id: "oil-free-facewash",
+    name: "Oil-Free Face Wash",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
+    image: "/media/oilfree-facewash-1.jpg",
+    images: ["/media/oilfree-facewash-1.jpg", "/media/oilfree-facewash-3.jpg", "/media/oilfree-facewash-2.jpg"],
+    category: "Body",
+    ingredients: ["Lemongrass Extract", "Lemongrass Leaf", "Aleovera Extract", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
     benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
     usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
     certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
     size: "100gm",
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Salicylic-Vitamin-C-Cleansing-Acne-Prone/dp/B0G47SWFJZ/",
+
+    },
+    related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
+  },
+  {
+    id: "all-skin-facewash",
+    name: "All Skin Face Wash",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells. This dual-action exfoliant combines physical and chemical exfoliation to reveal smoother, brighter skin without causing irritation. Suitable for all skin types when used as directed.",
+    image: "/media/allskin-facewash-1.jpg",
+    images: ["/media/allskin-facewash-1.jpg", "/media/allskin-facewash-2.jpg"],
+    category: "Body",
+    ingredients: ["Lemongrass Extract", "Lemongrass Leaf", "Aleovera Extract", "Coconut Oil", "Vegetable Oil Soap Base", "Glycerine", "Propylene Glycol", "Disodium EDTA", "Butylated Hydroxy Toluene", "Fragnance"],
+    benefits: ["Removes dead skin cells", "Improves skin texture", "Brightens complexion", "Enhances product absorption"],
+    usage: "Apply to damp skin in gentle circular motions. Rinse thoroughly. Use 1-2 times weekly or as needed.",
+    certifications: ["Vegan", "Cruelty-Free", "Non-Toxic"],
+    size: "100gm",
+    purchaseLinks: {
+      amazon: "https://www.amazon.in/COCAST-Face-Wash-Combo-Pack/dp/B0G47K98JS/",
+
+    },
     related: ["revitalizing-serum", "hydrating-face-cream", "refreshing-facial-toner"]
   }
 ];
@@ -248,33 +300,40 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [relatedProducts, setRelatedProducts] = useState<any[]>([]);
-  
+
+  useSEO({
+    title: product ? product.name : 'Product',
+    description: product
+      ? `${product.name} by Cocast — ${product.description.slice(0, 140)}...`
+      : 'View product details for Cocast natural personal care products.',
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     // In a real app, this would be an API call
     const fetchProduct = () => {
       setLoading(true);
       const foundProduct = products.find(p => p.id === id);
-      
+
       if (foundProduct) {
         setProduct(foundProduct);
-        
+
         // Get related products
         if (foundProduct.related && foundProduct.related.length > 0) {
-          const related = foundProduct.related.map(relatedId => 
+          const related = foundProduct.related.map(relatedId =>
             products.find(p => p.id === relatedId)
           ).filter(Boolean);
           setRelatedProducts(related);
         }
       }
-      
+
       setLoading(false);
     };
-    
+
     fetchProduct();
   }, [id]);
-  
+
   if (loading) {
     return (
       <div className="pt-24 pb-16">
@@ -289,15 +348,15 @@ const ProductDetailPage = () => {
       </div>
     );
   }
-  
+
   if (!product) {
     return (
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-2xl font-medium mb-4">Product Not Found</h1>
           <p className="mb-6">Sorry, we couldn't find the product you're looking for.</p>
-          <Link 
-            to="/products" 
+          <Link
+            to="/products"
             className="inline-block bg-cocast-sage hover:bg-cocast-darkSage text-white font-medium py-2 px-4 rounded-md transition-colors"
           >
             Back to Products
@@ -306,7 +365,7 @@ const ProductDetailPage = () => {
       </div>
     );
   }
-  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -330,32 +389,28 @@ const ProductDetailPage = () => {
             <li className="text-cocast-brown font-medium truncate">{product.name}</li>
           </ol>
         </nav>
-        
+
         {/* Product Details */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Product Image */}
+          {/* Product Image Gallery */}
           <div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <img 
-                src={product.image} 
-                alt={product.name} 
-                className="w-full h-full rounded-md object-cover"
-                // style={{ maxHeight: '500px' }}
-              />
-            </div>
-            
+            <ProductGallery
+              images={product.images || [product.image]}
+              productName={product.name}
+            />
+
             {/* Certifications */}
             {product.certifications && product.certifications.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-3">
                 {product.certifications.map((cert: string) => (
-                  <div 
+                  <div
                     key={cert}
                     className="flex items-center bg-cocast-cream px-3 py-1.5 rounded-full"
                   >
                     {cert === 'Vegan' && <Leaf size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Cruelty-Free' && <Heart size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Organic' && <PackageOpen size={16} className="mr-1.5 text-cocast-darkSage" />}
-{/*                     {cert === 'Paraben-Free' && <NoEntry size={16} className="mr-1.5 text-cocast-darkSage" />}
+                    {/*                     {cert === 'Paraben-Free' && <NoEntry size={16} className="mr-1.5 text-cocast-darkSage" />}
                     {cert === 'Non-Toxic' && <Shield size={16} className="mr-1.5 text-cocast-darkSage" />} */}
 
                     <span className="text-xs font-medium">{cert}</span>
@@ -364,16 +419,90 @@ const ProductDetailPage = () => {
               </div>
             )}
           </div>
-          
+
           {/* Product Info */}
           <div>
             <span className="inline-block text-sm font-medium text-cocast-darkSage mb-2">{product.category}</span>
             <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-4">{product.name}</h1>
-            
+
             <div className="prose prose-green max-w-none mb-6">
               <p className="text-cocast-brown/80">{product.description}</p>
             </div>
-            
+
+            {/* Purchase Links */}
+            {product.purchaseLinks && (
+              <div className="mb-8 p-4 bg-cocast-cream/50 rounded-lg border border-cocast-beige">
+                <h3 className="font-medium mb-3 text-cocast-brown">Buy Now</h3>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  {/* Amazon */}
+                  {'amazon' in product.purchaseLinks && (
+                    product.purchaseLinks.amazon ? (
+                      <a
+                        href={product.purchaseLinks.amazon}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-[#FF9900] hover:bg-[#FF9900]/90 text-white font-medium py-2.5 px-4 rounded-md transition-colors"
+                      >
+                        <span className="font-bold text-lg">Amazon</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 4h6m0 0v6m0-6L10 14M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <div className="flex-1 flex flex-col items-center justify-center gap-1 bg-[#FF9900]/40 text-white font-medium py-2.5 px-4 rounded-md cursor-not-allowed">
+                        <span className="font-bold text-base">Amazon</span>
+                        <span className="text-[10px] font-semibold tracking-widest uppercase bg-white/30 px-2 py-0.5 rounded-full">Coming Soon</span>
+                      </div>
+                    )
+                  )}
+
+                  {/* Flipkart */}
+                  {'flipkart' in product.purchaseLinks && (
+                    product.purchaseLinks.flipkart ? (
+                      <a
+                        href={product.purchaseLinks.flipkart}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-[#2874F0] hover:bg-[#2874F0]/90 text-white font-medium py-2.5 px-4 rounded-md transition-colors"
+                      >
+                        <span className="font-bold text-lg">Flipkart</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <div className="flex-1 flex flex-col items-center justify-center gap-1 bg-[#2874F0]/40 text-white font-medium py-2.5 px-4 rounded-md cursor-not-allowed">
+                        <span className="font-bold text-base">Flipkart</span>
+                        <span className="text-[10px] font-semibold tracking-widest uppercase bg-white/30 px-2 py-0.5 rounded-full">Coming Soon</span>
+                      </div>
+                    )
+                  )}
+
+                  {/* Meesho */}
+                  {'meesho' in product.purchaseLinks && (
+                    product.purchaseLinks.meesho ? (
+                      <a
+                        href={product.purchaseLinks.meesho}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-[#9F2089] hover:bg-[#9F2089]/90 text-white font-medium py-2.5 px-4 rounded-md transition-colors"
+                      >
+                        <span className="font-bold text-lg">Meesho</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <div className="flex-1 flex flex-col items-center justify-center gap-1 bg-[#9F2089]/40 text-white font-medium py-2.5 px-4 rounded-md cursor-not-allowed">
+                        <span className="font-bold text-base">Meesho</span>
+                        <span className="text-[10px] font-semibold tracking-widest uppercase bg-white/30 px-2 py-0.5 rounded-full">Coming Soon</span>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Size */}
             {product.size && (
               <div className="mb-6">
@@ -381,7 +510,7 @@ const ProductDetailPage = () => {
                 <span className="inline-block bg-cocast-cream px-3 py-1 rounded text-sm">{product.size}</span>
               </div>
             )}
-            
+
             {/* Benefits */}
             {product.benefits && product.benefits.length > 0 && (
               <div className="mb-6">
@@ -398,7 +527,7 @@ const ProductDetailPage = () => {
                 </ul>
               </div>
             )}
-            
+
             {/* Usage Instructions */}
             {product.usage && (
               <div className="mb-6">
@@ -406,7 +535,7 @@ const ProductDetailPage = () => {
                 <p className="text-cocast-brown/80 text-sm">{product.usage}</p>
               </div>
             )}
-            
+
             {/* Ingredients */}
             {product.ingredients && product.ingredients.length > 0 && (
               <div className="mb-6">
@@ -418,11 +547,11 @@ const ProductDetailPage = () => {
                 </div>
               </div>
             )}
-            
+
             {/* Back to Products Button */}
             <div className="mt-8">
-              <Link 
-                to="/products" 
+              <Link
+                to="/products"
                 className="inline-flex items-center border border-cocast-sage text-cocast-sage hover:bg-cocast-sage hover:text-white font-medium py-2 px-4 rounded-md transition-colors"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -433,7 +562,7 @@ const ProductDetailPage = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-16">

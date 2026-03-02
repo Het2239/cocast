@@ -8,21 +8,21 @@ const featuredProducts = [
     id: "gold-shampoo",
     name: "Gold Shampoo",
     description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
-    image: "/media/gold-shampoo.png",
+    image: "/media/gold-shampoo-1.png",
     category: "Hair Care"
   },
   {
     id: "rose-body-lotion",
     name: "Rose-Oud Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
-    image: "/media/rose-bodylotion.png",
+    image: "/media/rose-lotion-1.jpeg",
     category: "Skincare"
   },
   {
     id: "velvet-body-wash",
     name: "Velvet Touch Body Wash",
     description: "Gentle cleansing with coconut-derived surfactants and essential oils.",
-    image: "/media/velvet-bodywash.png",
+    image: "/media/vt-bodywash-1.jpeg",
     category: "Body"
   }
 ];

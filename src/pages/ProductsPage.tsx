@@ -2,35 +2,29 @@
 import { useEffect, useState } from 'react';
 import ProductCard from '@/components/ProductCard';
 import { motion } from 'framer-motion';
+import useSEO from '@/hooks/useSEO';
 
 // Sample product data
 const products = [
-  // {
-  //   id: "revitalizing-serum",
-  //   name: "Revitalizing Serum",
-  //   description: "A potent blend of botanical extracts that hydrate and restore skin elasticity.",
-  //   image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=1374&auto=format&fit=crop",
-  //   category: "Skincare"
-  // },
   {
     id: "gold-shampoo",
     name: "Gold Shampoo",
     description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
-    image: "/media/gold-shampoo.png",
+    image: "/media/gold-shampoo-1.png",
     category: "Hair Care"
   },
   {
     id: "velvet-shampoo",
     name: "Velvet Touch Shampoo",
     description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
-    image: "/media/velvet-shampoo.jpg",
+    image: "/media/vt-shampoo-1.jpeg",
     category: "Hair Care"
   },
   {
     id: "rosemary-shampoo",
     name: "Rosemary Shampoo",
     description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
-    image: "/media/rosemary-shampoo.png",
+    image: "/media/rose-shampoo-1.png",
     category: "Hair Care"
   },
   // {
@@ -44,21 +38,21 @@ const products = [
     id: "rose-body-lotion",
     name: "Rose-Oud Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
-    image: "/media/rose-bodylotion.png",
+    image: "/media/rose-lotion-1.jpeg",
     category: "Skincare"
   },
   {
     id: "velvet-body-lotion",
     name: "Velvet Touch Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
-    image: "/media/velvet-bodylotion.png",
+    image: "/media/vt-lotion-1.jpeg",
     category: "Skincare"
   },
   {
     id: "honey-body-lotion",
     name: "Honey Almonds Body Lotion",
     description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
-    image: "/media/honey-bodylotion.png",
+    image: "/media/honey-lotion-1.jpeg",
     category: "Skincare"
   },
   // {
@@ -72,14 +66,14 @@ const products = [
     id: "rose-body-wash",
     name: "Rose Oud Body Wash",
     description: "Gentle cleansing with coconut-derived surfactants and essential oils.",
-    image: "/media/rose-bodywash.png",
+    image: "/media/rose-bodywash-1.jpeg",
     category: "Body"
   },
   {
     id: "velvet-body-wash",
     name: "Velvet Touch Body Wash",
     description: "Gentle cleansing with coconut-derived surfactants and essential oils.",
-    image: "/media/velvet-bodywash.png",
+    image: "/media/vt-bodywash-1.jpeg",
     category: "Body"
   },
   // {
@@ -93,62 +87,80 @@ const products = [
     id: "neem-soap",
     name: "Neam Basil Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
-    image: "/media/neem-soap.png",
+    image: "/media/neem-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "rose-soap",
     name: "Rose Petals Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
-    image: "/media/rose-soap.png",
+    image: "/media/rose-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "camphor-soap",
     name: "Camphor Cube Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
-    image: "/media/camphor-soap.png",
+    image: "/media/camphor-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "sandal-soap",
     name: "Sandal & Saffron Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
-    image: "/media/sandal-soap.png",
+    image: "/media/sandal-soap-1.jpeg",
     category: "Body"
   },
-    {
+  {
     id: "lemon-soap",
     name: "Sandal & Saffron Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
-    image: "/media/lemon-soap.png",
+    image: "/media/lemon-soap-1.jpeg",
     category: "Body"
   },
-    {
+  {
     id: "velvet-soap",
     name: "Sandal & Saffron Soap",
     description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
-    image: "/media/velvet-soap.png",
+    image: "/media/vt-soap-1.jpeg",
     category: "Body"
+  },
+  {
+    id: "all-skin-facewash",
+    name: "All Skin Face Wash",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    image: "/media/allskin-facewash-1.jpg",
+    category: "Face"
+  },
+  {
+    id: "oil-free-facewash",
+    name: "Oil-Free Face Wash",
+    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    image: "/media/oilfree-facewash-1.jpg",
+    category: "Face"
   }
 ];
 
-const categories = ["All", "Skincare", "Hair Care", "Body"];
+const categories = ["All", "Skincare", "Hair Care", "Body", "Face"];
 
 const ProductsPage = () => {
+  useSEO({
+    title: 'All Products',
+    description: 'Shop the full Cocast collection — herbal shampoos, artisan soaps, body lotions, body wash and face wash. All products are natural, vegan and cruelty-free.',
+  });
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredProducts, setFilteredProducts] = useState(products);
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     if (activeCategory === "All") {
       setFilteredProducts(products);
     } else {
       setFilteredProducts(products.filter(product => product.category === activeCategory));
     }
   }, [activeCategory]);
-  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -163,25 +175,24 @@ const ProductsPage = () => {
           <p className="max-w-2xl mx-auto text-cocast-brown/80">
             Explore our collection of natural personal care products, crafted with sustainable ingredients and thoughtful formulations.
           </p>
-          
+
           {/* Category Filter */}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeCategory === category 
-                    ? 'bg-cocast-sage text-white' 
-                    : 'bg-cocast-cream text-cocast-brown hover:bg-cocast-beige'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCategory === category
+                  ? 'bg-cocast-sage text-white'
+                  : 'bg-cocast-cream text-cocast-brown hover:bg-cocast-beige'
+                  }`}
               >
                 {category}
               </button>
             ))}
           </div>
         </div>
-        
+
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => (
@@ -195,7 +206,7 @@ const ProductsPage = () => {
             </motion.div>
           ))}
         </div>
-        
+
         {filteredProducts.length === 0 && (
           <div className="text-center py-10">
             <p className="text-cocast-brown/70">No products found in this category.</p>

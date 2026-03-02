@@ -1,14 +1,26 @@
 import { useState, useEffect } from 'react';
+import useSEO from '@/hooks/useSEO';
 
-declare global {
-  interface Window {
-    emailjs?: any;
-  }
-}
 
-const EMAILJS_SERVICE_ID = 'service_ic07uth';
-const EMAILJS_TEMPLATE_ID = 'template_93h71xx';
-const EMAILJS_PUBLIC_KEY = 'DEkJADZWqI-PpbIdA';
+// ============================================================================
+// GOOGLE FORMS CONFIGURATION
+// ============================================================================
+// Form URL: https://forms.gle/suytGiynPgjoAxtk9
+// All responses will be automatically saved to your linked Google Sheet
+// ============================================================================
+
+const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSft3UPqcrMEuTos0P0F4bx3QDV9krBq0MiTp2-RjhHraQStKg/formResponse';
+
+const GOOGLE_FORM_FIELDS = {
+  name: 'entry.1928515957',
+  email: 'entry.1528967230',
+  subject: 'entry.1044895054',
+  message: 'entry.1297713770',
+  // TODO: Add these 3 new fields to your Google Form, then replace the entry IDs below
+  phone: 'entry.966412314',
+  state: 'entry.1891163916',
+  country: 'entry.557688671',
+};
 
 const MapSection = () => {
   return (
@@ -121,41 +133,30 @@ const MapSection = () => {
 };
 
 const ContactPage = () => {
+  useSEO({
+    title: 'Contact Us',
+    description: 'Get in touch with Cocast for product enquiries, distributorship, retail partnerships, or brand collaborations. We\'d love to hear from you.',
+  });
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-    script.async = true;
-    script.onload = () => {
-      if (window.emailjs) {
-        window.emailjs.init(EMAILJS_PUBLIC_KEY);
-      }
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
   }, []);
 
   const showToast = (message, type = 'success') => {
-    // Simple toast implementation since sonner is not available
     const toast = document.createElement('div');
-    toast.className = `fixed top-4 right-4 p-4 rounded-md text-white z-50 ${
-      type === 'success' ? 'bg-green-500' : 'bg-red-500'
-    }`;
+    toast.className = `fixed top-4 right-4 p-4 rounded-md text-white z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'
+      }`;
     toast.textContent = message;
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
       if (document.body.contains(toast)) {
         document.body.removeChild(toast);
@@ -167,38 +168,47 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (!window.emailjs) {
-      showToast('Email service is not available. Please try again later.', 'error');
+    // Validate form fields
+    if (!name || !email || !phone || !state || !country || !subject || !message) {
+      showToast('Please fill in all fields.', 'error');
       setIsSubmitting(false);
       return;
     }
 
-    const templateParams = {
-      from_name: name,
-      from_email: email,
-      subject,
-      message,
-      to_email: 'hetchavadiya@gmail.com',
-      reply_to: email,
-    };
+    // Create form data for Google Forms
+    const formData = new FormData();
+    formData.append(GOOGLE_FORM_FIELDS.name, name);
+    formData.append(GOOGLE_FORM_FIELDS.email, email);
+    formData.append(GOOGLE_FORM_FIELDS.phone, phone);
+    formData.append(GOOGLE_FORM_FIELDS.state, state);
+    formData.append(GOOGLE_FORM_FIELDS.country, country);
+    formData.append(GOOGLE_FORM_FIELDS.subject, subject);
+    formData.append(GOOGLE_FORM_FIELDS.message, message);
 
     try {
-      await window.emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams
-      );
+      // Submit to Google Forms
+      // Note: Using 'no-cors' mode because Google Forms doesn't return CORS headers
+      // This means we can't read the response, but the submission still works
+      await fetch(GOOGLE_FORM_ACTION_URL, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors',
+      });
+
+      // Since we can't read the response with no-cors, we assume success
       showToast('Message sent successfully! We will get back to you soon.');
+
+      // Clear form
       setName('');
       setEmail('');
+      setPhone('');
+      setState('');
+      setCountry('');
       setSubject('');
       setMessage('');
     } catch (error) {
-      let errorMessage = 'Failed to send message. Please try again later.';
-      if (error?.status === 422) errorMessage = 'Invalid input. Please check and try again.';
-      else if (error?.status === 403) errorMessage = 'Service access denied. Please contact us directly.';
-
-      showToast(errorMessage, 'error');
+      console.error('Form submission error:', error);
+      showToast('Failed to send message. Please try again later.', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -226,7 +236,7 @@ const ContactPage = () => {
               We aim to respond within 24-48 hours on business days. Mark messages "Urgent" for priority.
             </p>
 
-            <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-800 mb-1">Name</label>
                 <input
@@ -251,6 +261,46 @@ const ContactPage = () => {
                   placeholder="you@example.com"
                   className="w-full rounded-md border px-4 py-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-800 mb-1">Contact No.</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                  placeholder="+91 XXXXX XXXXX"
+                  className="w-full rounded-md border px-4 py-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="state" className="block text-sm font-medium text-gray-800 mb-1">State</label>
+                  <input
+                    id="state"
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    required
+                    placeholder="e.g. Gujarat"
+                    className="w-full rounded-md border px-4 py-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="country" className="block text-sm font-medium text-gray-800 mb-1">Country</label>
+                  <input
+                    id="country"
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    required
+                    placeholder="e.g. India"
+                    className="w-full rounded-md border px-4 py-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                </div>
               </div>
 
               <div>
@@ -280,25 +330,23 @@ const ContactPage = () => {
               </div>
 
               <button
-  type="button"
-  onClick={handleSubmit}
-  disabled={isSubmitting}
-  className="w-full bg-cocast-sage hover:bg-cocast-darkSage text-white font-medium py-2.5 px-6 rounded-md transition-colors disabled:opacity-70 flex items-center justify-center"
->
-  {isSubmitting ? (
-    <>
-      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.373 0 12h4zm2 5.29A7.96 7.96 0 014 12H0c0 3.04 1.13 5.82 3 7.94l3-2.65z" />
-      </svg>
-      Sending...
-    </>
-  ) : (
-    'Send Message'
-  )}
-</button>
-
-            </div>
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-cocast-sage hover:bg-cocast-darkSage text-white font-medium py-2.5 px-6 rounded-md transition-colors disabled:opacity-70 flex items-center justify-center"
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.373 0 12h4zm2 5.29A7.96 7.96 0 014 12H0c0 3.04 1.13 5.82 3 7.94l3-2.65z" />
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </button>
+            </form>
           </div>
 
           {/* Contact Info */}
@@ -346,7 +394,6 @@ const ContactPage = () => {
                 </h3>
                 <div className="text-gray-700 ml-7">
                   <p>General: <a href="mailto:cocast.india@gmail.com" className="text-green-600 hover:underline">cocast.india@gmail.com</a></p>
-                  {/* <p>Support: <a href="mailto:support@cocast.com" className="text-green-600 hover:underline">support@cocast.com</a></p> */}
                 </div>
               </div>
 

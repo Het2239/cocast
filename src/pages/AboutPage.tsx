@@ -1,18 +1,23 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import useSEO from '@/hooks/useSEO';
 
 const AboutPage = () => {
+  useSEO({
+    title: 'About Us',
+    description: 'Learn about Cocast — a homegrown Indian brand creating premium natural personal care products with pure, sustainable ingredients. Our story, mission and values.',
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   };
-  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -32,23 +37,23 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Mission Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
+            <motion.div
               className="lg:w-1/2"
               {...fadeIn}
             >
-              <img 
+              <img
                 src="/media/essentials.png"
-                alt="Cocast team working with natural ingredients" 
+                alt="Cocast team working with natural ingredients"
                 className="rounded-lg shadow-lg w-[500px] h-[650px] object-cover ml-auto mr-auto"
               />
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="lg:w-1/2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -71,11 +76,11 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Values Section */}
       <section className="py-16 bg-cocast-beige/30">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,10 +92,10 @@ const AboutPage = () => {
               These principles guide everything we do, from product formulation to business practices.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Value 1 */}
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-lg shadow-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,9 +112,9 @@ const AboutPage = () => {
                 We are committed to using only natural, high-quality ingredients that benefit both your skin and the environment. No harmful chemicals, synthetic fragrances, or fillers.
               </p>
             </motion.div>
-            
+
             {/* Value 2 */}
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-lg shadow-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -119,16 +124,16 @@ const AboutPage = () => {
               <div className="w-12 h-12 bg-cocast-lightSage rounded-full flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-cocast-darkSage">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-              </svg>
+                </svg>
               </div>
               <h3 className="text-xl font-medium mb-3">Environmental Stewardship</h3>
               <p className="text-cocast-brown/80">
                 We're dedicated to sustainable practices at every step, from responsible sourcing to eco-friendly packaging and carbon-neutral shipping options.
               </p>
             </motion.div>
-            
+
             {/* Value 3 */}
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-lg shadow-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -148,7 +153,7 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Story Section */}
       {/* <section className="py-16">
         <div className="container mx-auto px-4">
@@ -197,12 +202,12 @@ const AboutPage = () => {
           </div>
         </div>
       </section> */}
-      
+
       {/* CTA Section */}
       <section className="py-16 bg-cocast-sage text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.h2 
+            <motion.h2
               className="text-3xl font-playfair font-bold mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -211,8 +216,8 @@ const AboutPage = () => {
             >
               Join Our Journey
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-lg mb-8 text-white/90"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -221,7 +226,7 @@ const AboutPage = () => {
             >
               Experience the Cocast difference with our collection of natural, sustainable personal care products crafted with care for you and our planet.
             </motion.p>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
