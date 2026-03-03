@@ -9,21 +9,21 @@ const products = [
   {
     id: "gold-shampoo",
     name: "Gold Shampoo",
-    description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
+    description: "Provitamin B5 & Rosemary Leaf Extract formula that strengthens hair, reduces dandruff, and leaves every strand cleaner and shinier.",
     image: "/media/gold-shampoo-1.png",
     category: "Hair Care"
   },
   {
     id: "velvet-shampoo",
     name: "Velvet Touch Shampoo",
-    description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
+    description: "Cyclopentasiloxane-enriched shampoo with dual Polyquaternium conditioning for silky, bouncy, more manageable hair.",
     image: "/media/vt-shampoo-1.jpeg",
     category: "Hair Care"
   },
   {
     id: "rosemary-shampoo",
     name: "Rosemary Shampoo",
-    description: "Gentle cleansing with aloe vera and avocado oil for soft, healthy hair.",
+    description: "Rosmerinus Officinalis (Rosemary) Leaf Extract shampoo that stimulates the scalp, repairs the hair cuticle, and strengthens from within.",
     image: "/media/rose-shampoo-1.png",
     category: "Hair Care"
   },
@@ -37,21 +37,21 @@ const products = [
   {
     id: "rose-body-lotion",
     name: "Rose-Oud Body Lotion",
-    description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
+    description: "Rose extract and licorice water lotion that reduces dryness, brightens skin tone, and leaves a soft, delicate fragrance.",
     image: "/media/rose-lotion-1.jpeg",
     category: "Skincare"
   },
   {
     id: "velvet-body-lotion",
     name: "Velvet Touch Body Lotion",
-    description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
+    description: "Mulberry extract and rice water lotion for intense hydration that brightens, smooths, and leaves skin feeling velvety and luminous.",
     image: "/media/vt-lotion-1.jpeg",
     category: "Skincare"
   },
   {
     id: "honey-body-lotion",
     name: "Honey Almonds Body Lotion",
-    description: "Rich in natural oils and butters to provide deep hydration for all skin types.",
+    description: "Honey extract and almond oil blend that locks in 24-hour hydration, soothes dryness, and leaves skin silky and naturally radiant.",
     image: "/media/honey-lotion-1.jpeg",
     category: "Skincare"
   },
@@ -65,14 +65,14 @@ const products = [
   {
     id: "rose-body-wash",
     name: "Rose Oud Body Wash",
-    description: "Gentle cleansing with coconut-derived surfactants and essential oils.",
+    description: "Rose water and aloe vera body wash that gently cleanses, hydrates, and leaves skin soft with a mood-lifting floral fragrance.",
     image: "/media/rose-bodywash-1.jpeg",
     category: "Body"
   },
   {
     id: "velvet-body-wash",
     name: "Velvet Touch Body Wash",
-    description: "Gentle cleansing with coconut-derived surfactants and essential oils.",
+    description: "Tea tree and mulberry extract body wash that cleanses deeply, protects skin, and leaves a fresh, long-lasting fragrance.",
     image: "/media/vt-bodywash-1.jpeg",
     category: "Body"
   },
@@ -86,56 +86,56 @@ const products = [
   {
     id: "neem-soap",
     name: "Neam Basil Soap",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    description: "Neem leaves paste with castor oil and Vitamin E — your daily defence against acne-causing bacteria and skin infections.",
     image: "/media/neem-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "rose-soap",
     name: "Rose Petals Soap",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    description: "Handcrafted with real rose petals and rose water — a natural toner that softens, hydrates, and gently protects against sun damage.",
     image: "/media/rose-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "camphor-soap",
     name: "Camphor Cube Soap",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    description: "Camphor powder with neem and aloe vera for a cooling, antibacterial and antifungal cleanse that purifies and hydrates.",
     image: "/media/camphor-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "sandal-soap",
     name: "Sandal & Saffron Soap",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    description: "Precious sandal oil and saffron extract soap that moisturises, brightens, and reduces dryness for healthy-looking skin.",
     image: "/media/sandal-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "lemon-soap",
-    name: "Sandal & Saffron Soap",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    name: "Lemon Grass Soap",
+    description: "Lemongrass extract with Vitamin C and scrub beads — antioxidant-rich soap that brightens complexion and controls oily skin.",
     image: "/media/lemon-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "velvet-soap",
-    name: "Sandal & Saffron Soap",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    name: "Velvet Touch Soap",
+    description: "Lavender buds and neem extract soap that relieves stress, fights acne, soothes dry skin, and helps reduce scarring.",
     image: "/media/vt-soap-1.jpeg",
     category: "Body"
   },
   {
     id: "all-skin-facewash",
     name: "All Skin Face Wash",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    description: "Salicylic acid and Golden Thread face wash for all skin types — gently cleanses, brightens, and maintains a healthy skin balance.",
     image: "/media/allskin-facewash-1.jpg",
     category: "Face"
   },
   {
     id: "oil-free-facewash",
     name: "Oil-Free Face Wash",
-    description: "Natural bamboo particles and fruit enzymes to gently remove dead skin cells.",
+    description: "Salicylic acid and Vitamin C oil-free face wash that deep cleanses pores, controls acne, and brightens dull skin.",
     image: "/media/oilfree-facewash-1.jpg",
     category: "Face"
   }
